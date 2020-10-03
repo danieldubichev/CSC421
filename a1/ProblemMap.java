@@ -78,7 +78,7 @@ public class ProblemMap extends Problem {
 		
 		Search search  = new Search(problem);
 		
-		//System.out.println("TreeSearch------------------------");
+		System.out.println("TreeSearch------------------------");
 		/*
 		System.out.println("BreadthFirstTreeSearch:\t\t" + search.BreadthFirstTreeSearch());
 		System.out.println("UniformCostTreeSearch:\t\t" + search.UniformCostTreeSearch());
@@ -89,8 +89,8 @@ public class ProblemMap extends Problem {
 
 		//for question 4 part 1A = complete
 		//note: prints the execution in order, then prints the solution route, can comment out if wanting just solution
-		System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch2()); //this has orders and testing data
-		//System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch()); //this does not
+		//System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch2()); //this has orders and testing data
+		System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch()); //this does not
 		
 		System.out.println("\n\nGraphSearch----------------------");
 		/*
@@ -104,8 +104,8 @@ public class ProblemMap extends Problem {
 		//for question 4 part 2 = complete.
 		//note: prints the execution in order, then prints the solution route, can comment out if wanting just solution
 		//note: do something with graph search it is giving us the wrong asnwer. 
-		System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch2()); //this has orders and testing data
-		//System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch()); //this does not
+		//System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch2()); //this has orders and testing data
+		System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch()); //this does not
 		
 		System.out.println("\n\nIterativeDeepening----------------------");
 		//note: iterative deepening is not optimal because the step cost is not one.

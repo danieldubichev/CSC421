@@ -62,14 +62,12 @@ public class Search {
 	
 	//Iterative deepening, tree-search and graph-search
 	public String IterativeDeepeningTreeSearch() {
-		int limit = 0;
-		
+		int limit = 0;		
 		while(true){
-			//can use either Frontier LIFO or Priority Queue. the priority queue seems to be efficient however as it has 1 less expansion
-			//String result = TreeSearchDepthLimited(new FrontierLIFO(), limit);
-			String result = TreeSearchDepthLimited(new FrontierPriorityQueue(new ComparatorF(problem)), limit);
+			String result = TreeSearchDepthLimited(new FrontierLIFO(), limit);
 			if (result == null){
 				limit++;
+				
 			} else {
 				return result;
 			}
@@ -77,11 +75,8 @@ public class Search {
 	}	
 	public String IterativeDeepeningGraphSearch() {
 		int limit = 0;
-		
 		while(true){
-			//can use either Frontier LIFO or Priority Queue. the priority queue seems to be efficient however as it has 1 less expansion
-			//String result = GraphSearchDepthLimited(new FrontierLIFO(), limit);
-			String result = GraphSearchDepthLimited(new FrontierPriorityQueue(new ComparatorF(problem)), limit);
+			String result = GraphSearchDepthLimited(new FrontierLIFO(), limit);
 			if (result == null){
 				limit++;
 			} else {
@@ -90,60 +85,87 @@ public class Search {
 		}
 	}
 	private String TreeSearchDepthLimited(Frontier frontier, int limit) {
-		//DFS tree search but if the depth of n is less than limit return the corresponding solution
+		cnt = 0;
+		node_list = new ArrayList<Node>();
+
+		initialNode = MakeNode(problem.initialState);
+		node_list.add( initialNode );
+
+		frontier.insert( initialNode );
+		while(true) {
+
+			if(frontier.isEmpty()){
+				return null;
+			}
+
+			Node node = frontier.remove();
+
+			if( problem.goal_test(node.state) ) {
+				return Solution(node);
+			}
+			if (node.depth < limit){
+				frontier.insertAll(Expand(node,problem));
+				cnt++;
+			}
+		}
+	}
+	private String GraphSearchDepthLimited(Frontier frontier, int limit) {
+		//Graph search but if the state of n is not in explored AND the depth of n is less than limit
 		cnt = 0; 
 		node_list = new ArrayList<Node>();
 		
 		initialNode = MakeNode(problem.initialState); 
 		node_list.add( initialNode );
-		//queue to store info about traversal -- for testing
-		//Queue<String> visited = new ArrayDeque<String>();
+
+		//queue to store info about traversal comment out for submission only for testing
+		/*
+		Queue<String> visited = new ArrayDeque<String>();
+		*/
 
 		
+		Set<Object> explored = new HashSet<Object>(); //empty set
 		frontier.insert( initialNode );
 		while(true) {
-			
-			if(frontier.isEmpty())
-				return null;
-			
-			Node node = frontier.remove();
 
-			//get information about node for testing
-			/*
-			String cur = ( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" 
-			+ ((double)problem.h(node.state) + (double)node.path_cost) + ") order=" + (cnt));
+			if(frontier.isEmpty()){
+				return null;
+			}
+
+			Node node = frontier.remove();
+			
+			/* for testing purposes
+			String cur = (( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" 
+			+ ((double)problem.h(node.state) + (double)node.path_cost) + " node depth= " + node.depth));
 			*/
 
-			//save node info into queue -- for testing
-			/*
+			
+			/*//save node info into queue for testing
 			visited.add(cur);		
-			*/			
-
-
+			*/
+			
 			if( problem.goal_test(node.state) ){
-				//to update node with order
+				//to update goal with order
 				node.order = cnt;
 				/* for testing
-				//print all visited route of the tree
-				System.out.println("Entire traversal of tree in order: Execution of TreeSearch");
+				System.out.println("Entire traversal of graph in order: Execution of GraphSearch");
 				PrintTreeAllVisited(visited);
-				//print the tree valid route
-				System.out.println("Traversal of solution route: Using TreeSearch");
+				//print the trees solution route
+				System.out.println("Traversal of solution route: Using GraphSearch");
 				System.out.println(PrintTree(node));
 				*/
+
+				//keep
 				return Solution(node);
 			}
-			
-			if (node.depth < limit){
+			if( !explored.contains(node.state) &&  node.depth < limit) {
+				//System.out.println("Adding to explored = " + node.state); //testing purposes
+				explored.add(node.state);
 				frontier.insertAll(Expand(node,problem));
 				cnt++;
-			}
-		
+			} 
 		}
-
 		
 	}
-	
 	//For statistics purposes
 	int cnt; //count expansions
 	List<Node> node_list; //store all nodes ever generated
@@ -168,12 +190,18 @@ public class Search {
 			}
 			Node node = frontier.remove();
 			
+			// ****** all my added code for depth / printing function 
+			//create the indent according to each node's depth
+			String indent = "";
+			for (int i = node.depth; i > 0; i--){
+				indent = indent + "    ";
+			}
 			//get information about node
-			String cur = ( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" 
+			String cur = indent + ( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" 
 			+ ((double)problem.h(node.state) + (double)node.path_cost) + ") order=" + (cnt));
-
-			//save node info into queue
+			//save node info into queue - it will
 			visited.add(cur);		
+			// ****** end of added code for depth / printing function
 			
 			if( problem.goal_test(node.state) ){
 				//quick function to make the order updated to reflect bucharest; so it does not return -1;
@@ -183,7 +211,7 @@ public class Search {
 				PrintTreeAllVisited(visited);
 				//print the tree valid route
 				System.out.println("Traversal of solution route: Using TreeSearch");
-				System.out.println(PrintTree(node));
+
 				return Solution(node);
 			}
 			frontier.insertAll(Expand(node,problem));
@@ -244,64 +272,7 @@ public class Search {
 
 
 	
-	private String GraphSearchDepthLimited(Frontier frontier, int limit) {
-		//Graph search but if the state of n is not in explored AND the depth of n is less than limit
-		cnt = 0; 
-		node_list = new ArrayList<Node>();
-		
-		initialNode = MakeNode(problem.initialState); 
-		node_list.add( initialNode );
 
-		//queue to store info about traversal comment out for submission only for testing
-		/*
-		Queue<String> visited = new ArrayDeque<String>();
-		*/
-
-		
-		Set<Object> explored = new HashSet<Object>(); //empty set
-		frontier.insert( initialNode );
-		while(true) {
-
-			if(frontier.isEmpty()){
-				return null;
-			}
-
-			Node node = frontier.remove();
-			
-			/* for testing purposes
-			String cur = (( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" 
-			+ ((double)problem.h(node.state) + (double)node.path_cost) + " node depth= " + node.depth));
-			*/
-
-			
-			/*//save node info into queue for testing
-			visited.add(cur);		
-			*/
-			
-			if( problem.goal_test(node.state) ){
-				//to update goal with order
-				node.order = cnt;
-				/* for testing
-				System.out.println("Entire traversal of graph in order: Execution of GraphSearch");
-				PrintTreeAllVisited(visited);
-				//print the trees solution route
-				System.out.println("Traversal of solution route: Using GraphSearch");
-				System.out.println(PrintTree(node));
-				*/
-
-				//keep
-				return Solution(node);
-			}
-			
-			if( !explored.contains(node.state) &&  node.depth < limit) {
-				//System.out.println("Adding to explored = " + node.state); //testing purposes
-				explored.add(node.state);
-				frontier.insertAll(Expand(node,problem));
-				cnt++;
-			} 
-		}
-		
-	}
 
 
 	private String GraphSearch2(Frontier frontier) {
@@ -322,28 +293,41 @@ public class Search {
 				return null;
 			
 			Node node = frontier.remove();
-			//get information about node
-			String cur = ( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" 
-			+ ((double)problem.h(node.state) + (double)node.path_cost) + ") order=" + (cnt));
-			
-			//save node info into queue
-			visited.add(cur);		
+			//create the indent according to each node's depth
+			String indent = "";
+			for (int i = node.depth; i > 0; i--){
+				indent = indent + "    ";
+			}
+				
 						
 			if( problem.goal_test(node.state) ){
+				//add the goal to the traversal queue
+				//get information about node
+				String cur = indent + ( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" 
+				+ ((double)problem.h(node.state) + (double)node.path_cost) + ") order=" + (cnt));
+			
+				//save node info into queue
+				visited.add(cur);
+
+
+
 				//quick function to make the order updated to reflect bucharest; so it does not return -1;
 				node.order = cnt;
 				//print the tree execution route
 				System.out.println("Entire traversal of graph in order: Execution of GraphSearch");
 				PrintTreeAllVisited(visited);
 				//print the trees solution route
-				System.out.println("Traversal of solution route: Using GraphSearch");
-				System.out.println(PrintTree(node));
 				System.out.println("Solution(node) = " + Solution(node));
 				System.out.println("Node.state = " + node.state);
 				return Solution(node);
 			}
 			
 			if( !explored.contains(node.state) ) {
+				String cur = indent + ( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" 
+				+ ((double)problem.h(node.state) + (double)node.path_cost) + ") order=" + (cnt));
+
+				visited.add(cur);
+				//originalcode
 				explored.add(node.state);
 				frontier.insertAll(Expand(node,problem));
 				cnt++;
@@ -393,31 +377,6 @@ public class Search {
 		}	
 		System.out.println();
 	}
-
-	private String PrintTree(Node node){
-
-		if (node == null){
-			String errormsg = "node is null; no solution found";
-			return errormsg;
-		}
-
-		String solution_str = "";
-		//used for printing one at a time in treesearch
-		//System.out.println( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" + ((double)problem.h(node.state) + (double)node.path_cost) + ") order=" + (0));
-		Deque<String> solutionname = new ArrayDeque<String>();
-		do {
-			solutionname.push(node.state.toString() + "(g= " + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" + ((double)problem.h(node.state) + (double)node.path_cost) + ") order=" + node.order);
-			node = node.parent_node;
-		} while(node != null);
-		
-		while(!solutionname.isEmpty()){
-			solution_str += solutionname.pop() + "\n";
-
-		}
-		
-		return solution_str;
-	}
-
 
 
 	//Create a string to print solution. 
