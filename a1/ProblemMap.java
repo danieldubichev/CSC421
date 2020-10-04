@@ -79,33 +79,33 @@ public class ProblemMap extends Problem {
 		Search search  = new Search(problem);
 		
 		System.out.println("TreeSearch------------------------");
-		/*
+		
 		System.out.println("BreadthFirstTreeSearch:\t\t" + search.BreadthFirstTreeSearch());
 		System.out.println("UniformCostTreeSearch:\t\t" + search.UniformCostTreeSearch());
 		System.out.println("DepthFirstTreeSearch:\t\t" + search.DepthFirstTreeSearch());
 		System.out.println("GreedyBestFirstTreeSearch:\t" + search.GreedyBestFirstTreeSearch());
 		System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch());
-		*/
+		
 
 		//for question 4 part 1A = complete
 		//note: prints the execution in order, then prints the solution route, can comment out if wanting just solution
 		//System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch2()); //this has orders and testing data
-		System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch()); //this does not
+		//System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch()); //this does not
 		
 		System.out.println("\n\nGraphSearch----------------------");
-		/*
+		
 		System.out.println("BreadthFirstGraphSearch:\t" + search.BreadthFirstGraphSearch());
 		System.out.println("UniformCostGraphSearch:\t\t" + search.UniformCostGraphSearch());
 		System.out.println("DepthFirstGraphSearch:\t\t" + search.DepthFirstGraphSearch());
 		System.out.println("GreedyBestGraphSearch:\t\t" + search.GreedyBestFirstGraphSearch());
 		System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch());
-		*/
+		
 		
 		//for question 4 part 2 = complete.
 		//note: prints the execution in order, then prints the solution route, can comment out if wanting just solution
 		//note: do something with graph search it is giving us the wrong asnwer. 
 		//System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch2()); //this has orders and testing data
-		System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch()); //this does not
+		//System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch()); //this does not
 		
 		System.out.println("\n\nIterativeDeepening----------------------");
 		//note: iterative deepening is not optimal because the step cost is not one.

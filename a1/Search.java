@@ -117,7 +117,7 @@ public class Search {
 		initialNode = MakeNode(problem.initialState); 
 		node_list.add( initialNode );
 
-		//queue to store info about traversal comment out for submission only for testing
+		//queue to store info about traversal comment out for submission only  --- for testing
 		/*
 		Queue<String> visited = new ArrayDeque<String>();
 		*/
@@ -146,19 +146,9 @@ public class Search {
 			if( problem.goal_test(node.state) ){
 				//to update goal with order
 				node.order = cnt;
-				/* for testing
-				System.out.println("Entire traversal of graph in order: Execution of GraphSearch");
-				PrintTreeAllVisited(visited);
-				//print the trees solution route
-				System.out.println("Traversal of solution route: Using GraphSearch");
-				System.out.println(PrintTree(node));
-				*/
-
-				//keep
 				return Solution(node);
 			}
 			if( !explored.contains(node.state) &&  node.depth < limit) {
-				//System.out.println("Adding to explored = " + node.state); //testing purposes
 				explored.add(node.state);
 				frontier.insertAll(Expand(node,problem));
 				cnt++;
