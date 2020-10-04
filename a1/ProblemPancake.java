@@ -50,8 +50,6 @@ public class ProblemPancake extends Problem {
         int pancakesize = pancake_state.N; //the amount of pancakes
         int flipcount = pancakesize; // size of the pancake
         int cur = 0; // what index we are currently performing a pancake flip at
-        int breakactive = 0; //if we need to break from the loop or not
-        //System.out.println(flipcount);
         while (flipcount != 0 ){
             
             //create new pancake state with each flip to preserve original state
