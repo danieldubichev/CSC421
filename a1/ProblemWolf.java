@@ -17,10 +17,31 @@ class ProblemWolf extends Problem{
     Set<Object> getSuccessors(Object state){
          Set<Object> set = new HashSet<Object>();
          StateWolf s1 = (StateWolf) state;
-         System.out.println(Arrays.toString(s1.possible));
          StateWolf ss;
 
+         
+        
+         
+         if((s1.possible[0] == 0) && (s1.possible[1] == 0) && (s1.possible[2] == 0) && (s1.possible[3] == 0)){
+            ss = new StateWolf(s1);
+            System.out.println("ss[0] = " + ss.possible[0]);
+            System.out.println("s1[0] = " + s1.possible[0]);
+            ss.possible[0] = 1;
+            System.out.println("ss[0] = " + ss.possible[0]);
+            System.out.println("s1[0] = " + s1.possible[0]);
+            System.out.println("1");
+            ss.toString();
+            System.out.println("ss[2] = " + ss.possible[2]);
+            System.out.println("s1[2] = " + s1.possible[2]);
+            ss.possible[2] = 1;
+            System.out.println("ss[2] = " + ss.possible[2]);
+            System.out.println("s1[2] = " + s1.possible[2]);
+            set.add(ss);
+            return set;
+         }
+         
          ss = new StateWolf(s1);
+         System.out.println(ss);
          if((s1.possible[0] == 1) && (s1.possible[1] == 0) && (s1.possible[2] == 1) && (s1.possible[3] == 0)){
              set.add(ss);
          }

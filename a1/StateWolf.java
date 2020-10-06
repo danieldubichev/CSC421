@@ -6,17 +6,12 @@ public class StateWolf {
     //river.
     public StateWolf(int[] possible){
         this.possible = possible;
-        int i = 0;
-        while(i < 4){
-            this.possible[i] = 0;
-            i++;
-        }
     }
 
     public StateWolf(StateWolf state){
-        int [] possible = new int[4];
+        possible = new int[4];
         int i = 0;
-        while(i < possible.length-1){
+        while(i < 4){
             possible[i] = state.possible[i];
             i++;
         }
