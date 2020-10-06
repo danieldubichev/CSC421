@@ -107,6 +107,7 @@ public class Search {
 				frontier.insertAll(Expand(node,problem));
 				cnt++;
 			}
+			
 		}
 	}
 	private String GraphSearchDepthLimited(Frontier frontier, int limit) {
@@ -136,13 +137,10 @@ public class Search {
 			/* for testing purposes
 			String cur = (( node.state + "(g=" + node.path_cost  + " , h=" + problem.h(node.state)+ ", f=" 
 			+ ((double)problem.h(node.state) + (double)node.path_cost) + " node depth= " + node.depth));
-			*/
-
-			
+			*/			
 			/*//save node info into queue for testing
 			visited.add(cur);		
 			*/
-			
 			if( problem.goal_test(node.state) ){
 				//to update goal with order
 				node.order = cnt;
