@@ -72,9 +72,9 @@ public class ProblemMap extends Problem {
 	}
 
 	public static void main(String[] args) throws Exception {
-		ProblemMap problem = new ProblemMap("romania.txt","romaniaSLD.txt");
-		problem.initialState = "Timisoara";
-		problem.goalState = "Bucharest";
+		ProblemMap problem = new ProblemMap("sweden.txt","swedenSLD.txt");
+		problem.initialState = "Malmo";
+		problem.goalState = "Stockholm";
 		
 		Search search  = new Search(problem);
 		
@@ -89,8 +89,8 @@ public class ProblemMap extends Problem {
 
 		//for question 4 part 1A = complete
 		//note: prints the execution in order, then prints the solution route, can comment out if wanting just solution
-		System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch2()); //this has orders and testing data
-		System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch()); //this does not
+		//System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch2()); //this has orders and testing data
+		//System.out.println("AstarTreeSearch:\t\t" + search.AstarTreeSearch()); //this does not
 		
 		System.out.println("\n\nGraphSearch----------------------");
 		
@@ -104,7 +104,8 @@ public class ProblemMap extends Problem {
 		//for question 4 part 2 = complete.
 		//note: prints the execution in order, then prints the solution route, can comment out if wanting just solution
 		//note: do something with graph search it is giving us the wrong asnwer. 
-		System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch2()); //this has orders and testing data
+		//System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch2()); //this has orders and testing data
+		
 		System.out.println("AstarGraphSearch:\t\t" + search.AstarGraphSearch()); //this does not
 		
 		System.out.println("\n\nIterativeDeepening----------------------");

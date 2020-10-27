@@ -18,6 +18,6 @@ Lugoj	Timisoara	111
 Lugoj	Mehadia	70
 Oradea	Zerind	71
 Oradea	Sibiu	151
-Pitesti	Rimnicu	97
+Pitesti Rimnicu	97
 Rimnicu	Sibiu	80
 Urziceni	Vaslui	142

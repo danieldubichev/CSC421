@@ -7,7 +7,6 @@ public class StatePancake
     public StatePancake(int[] puzzleArray) { 
     	this.puzzleArray = puzzleArray; 
     	N = puzzleArray.length;
-    	
     }
     
     //It has to be a copy of values not reference because we will 
@@ -19,7 +18,6 @@ public class StatePancake
         for(int i=0; i<N; i++){
         		puzzleArray[i] = state.puzzleArray[i];
         }
-       
     }
     
     public boolean equals(Object o) {

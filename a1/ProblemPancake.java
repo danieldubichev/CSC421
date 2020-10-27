@@ -93,7 +93,7 @@ public class ProblemPancake extends Problem {
 
         ProblemPancake problem = new ProblemPancake();
 		//starting state
-		int[] puzzleArray = {1,0,3,5,2,4};
+		int[] puzzleArray = {1,0,3,5,2,4,6,7,8};
 		problem.initialState = new StatePancake(puzzleArray);
 
 		Search search  = new Search(problem);

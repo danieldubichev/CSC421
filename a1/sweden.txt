@@ -1,0 +1,16 @@
+Aseda   Osby    129
+Aseda   Nykoping  276
+Asteby  Karlstad    119
+Asteby  Mora    139
+Borlenge    Mora    101
+Borlenge    Uppsala    165
+Goteborg    Karlstad    248
+Goteborg    Jonkoping  151
+Goteborg    Malmo   274
+Jonkoping   Nykoping  226
+Kalmar  Kristianstad    191
+Kalmar  Nykoping    314
+Kristianstad    Malmo   98
+Malmo   Osby  122
+Nykoping    Stockholm   102
+Stockholm   Uppsala   72

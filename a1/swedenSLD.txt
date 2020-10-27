@@ -1,0 +1,14 @@
+Aseda   288
+Asteby   300
+Borlenge    195
+Goteborg    395
+Jonkoping   284
+Kalmar  313
+Karlstad    258
+Kristianstad    430
+Malmo   513
+Mora    270
+Nykoping    88
+Osby    407
+Stockholm   0
+Uppsala 64
