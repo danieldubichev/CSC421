@@ -18,14 +18,14 @@ public class CSPBikeRiding extends CSP {
 		
 		//if X is not even mentioned in by the constraints, just return true
 		//as nothing can be violated
-		if(!C.containsKey(X))
+		if(!C.containsKey(X)){
 			return true;
-		
+		}		
 		//check to see if there is an arc between X and Y
 		//if there isn't an arc, then no constraint, i.e. it is good
-		if(!C.get(X).contains(Y))
+		if(!C.get(X).contains(Y)){
 			return true;
-
+		}
 
         	//The 16-year-old brought Cheese sandwich. 
         	if(X.equals("16 years") && Y.equals("cheese") && !x.equals(y)){
