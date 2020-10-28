@@ -9,10 +9,13 @@ public class CSPBikeRiding extends CSP {
 	static Set<Object> varSandwich = new HashSet<Object>(Arrays.asList(new String[] {"bacon", "chicken", "cheese", "pepperoni", "tuna"}));
 	static Set<Object> varJuice = new HashSet<Object>(Arrays.asList(new String[] {"apple", "cranberry", "grapefruit", "orange", "pineapple"}));
 	static Set<Object> varAge = new HashSet<Object>(Arrays.asList(new String[] {"12 years", "13 years", "14 years", "15 years", "16 years"}));
-    static Set<Object> varSport = new HashSet<Object>(Arrays.asList(new String[] {"baseball", "basketball", "hockey", "soccer", "swimming"}));
+    	static Set<Object> varSport = new HashSet<Object>(Arrays.asList(new String[] {"baseball", "basketball", "hockey", "soccer", "swimming"}));
 	
 	public boolean isGood(Object X, Object Y, Object x, Object y) {
-		//System.out.println("X = " + X + ", Y = " + Y + ", x = " + x + ", y = " + y);
+		//System.out.println("X = " + X + ", Y = " + Y + ", x = " + x + ", y = " + y);             // for testing
+		
+		//all constraints correct
+		
 		//if X is not even mentioned in by the constraints, just return true
 		//as nothing can be violated
 		if(!C.containsKey(X))
@@ -24,34 +27,34 @@ public class CSPBikeRiding extends CSP {
 			return true;
 
 
-        //The 16-year-old brought Cheese sandwich. CORRECT
-        if(X.equals("16 years") && Y.equals("cheese") && !x.equals(y)){
-            return false;
-        }
-		//Henry is exactly to the left of the soccer fan. CORRECT
+        	//The 16-year-old brought Cheese sandwich. 
+        	if(X.equals("16 years") && Y.equals("cheese") && !x.equals(y)){
+            		return false;
+       		}
+		//Henry is exactly to the left of the soccer fan.
 		if(X.equals("Henry") && Y.equals("soccer") && (Integer)x-(Integer)y!=-1){
 			return false;
 		}
-		//Joel is next to the 16 year old cyclist. CORRECT
+		//Joel is next to the 16 year old cyclist. 
 		if(X.equals("Joel") && Y.equals("16 years") && Math.abs((Integer)x-(Integer)y)!=1){
 			return false;
 		}
-		//the one who likes swimming is next to the one that like baseball. CORRECT
+		//the one who likes swimming is next to the one that like baseball. 
 		if(X.equals("swimming") && Y.equals("baseball") && Math.abs((Integer)x-(Integer)y)!=1){
-            return false;
-        }
+           		return false;
+        	}
 
-		//the baseball fan is next to the one who drinks apple juice. CORRECT
+		//the baseball fan is next to the one who drinks apple juice. 
 		if(X.equals("baseball") && Y.equals("apple") && Math.abs((Integer)x-(Integer)y)!=1){
-            return false;
-        }
+            		return false;
+        	}
 
-		//the boy who likes the sport on ice (hockey) will eat pepperoni sandwich. CORRECT
+		//the boy who likes the sport on ice (hockey) will eat pepperoni sandwich. 
 		if(X.equals("hockey") && Y.equals("pepperoni") && !x.equals(y)){
-            return false;
-        }
+           		return false;
+        	}
 		
-		//The boy who is going to eat Bacon sandwich is somewhere to the right of the owner of the White bicycle. CORRECT
+		//The boy who is going to eat Bacon sandwich is somewhere to the right of the owner of the White bicycle.
 		if(X.equals("bacon") && Y.equals("white") && (Integer)x-(Integer)y <= 0){
 			return false;
 		}
