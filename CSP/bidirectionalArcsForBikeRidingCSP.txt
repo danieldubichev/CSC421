@@ -1,6 +1,7 @@
 		//The owner of the White bike is somewhere between the 15-year-old boy and the youngest boy, in that order.
 		csp.addBidirectionalArc("15 years", "white");		
 		csp.addBidirectionalArc("white", "12 years");
+		csp.addBidirectionalArc("15 years", "12 years");
 		
 		//Henry is exactly to the left of the Soccer fan.
 		csp.addBidirectionalArc("Henry", "soccer");
@@ -9,6 +10,7 @@
 		//somewhere between who brought Tuna sandwich and who brought Pineapple juice, in that order.
 		csp.addBidirectionalArc("tuna", "grapefruit");
 		csp.addBidirectionalArc("grapefruit", "pineapple");
+		csp.addBidirectionalArc("tuna", "pineapple");
 
 		//The one who likes Swimming is next to the friend who likes Baseball.
 		csp.addBidirectionalArc("swimming", "baseball");
@@ -17,6 +19,8 @@
 		//is somewhere between the 14-year-old and the boy that brought Orange juice, in that order.
 		csp.addBidirectionalArc("14 years", "pineapple");
 		csp.addBidirectionalArc("pineapple", "orange");
+		csp.addBidirectionalArc("14 years", "orange");
+
 
 		//The boy who likes the sport played on ice is going to eat Pepperoni sandwich.
 		csp.addBidirectionalArc("hockey", "pepperoni");
@@ -25,16 +29,17 @@
 		//is somewhere between the boys riding the blue and the black bicycles, in that order.
 		csp.addBidirectionalArc("blue", "white");
 		csp.addBidirectionalArc("white", "black");
-
+		csp.addBidirectionalArc("blue", "black");
 		//Joel is next to the 16-year-old cyclist.
 		csp.addBidirectionalArc("Joel", "16 years");
 
 		//Adrian is exactly to the left of the boy who is going to eat Pepperoni sandwich.
-		csp.addBidirectionalArc("Adrian", "pepperoni")
+		csp.addBidirectionalArc("Adrian", "pepperoni");
 
 		//The 12-year-old is somewhere between the 14-year-old and the oldest boy, in that order
 		csp.addBidirectionalArc("14 years", "12 years");
 		csp.addBidirectionalArc("12 years", "16 years");
+		csp.addBidirectionalArc("14 years", "16 years");
 
 		//The boy who is going to eat Bacon sandwich 
 		//is somewhere to the right of the owner of the White bicycle.
@@ -47,6 +52,7 @@
 		//between Richard and the boy riding the Red bike, in that order.
 		csp.addBidirectionalArc("Richard", "white");
 		csp.addBidirectionalArc("white", "red");
+		csp.addBidirectionalArc("Richard", "red");
 
 		//The Baseball fan is next to the boy who is going to drink Apple juice.
 		csp.addBidirectionalArc("baseball", "apple");
@@ -54,4 +60,6 @@
 		//Charles is somewhere between Richard and Adrian, in that order
 		csp.addBidirectionalArc("Richard", "Charles");
 		csp.addBidirectionalArc("Charles", "Adrian");
+		csp.addBidirectionalArc("Richard", "Adrian");
+
 
