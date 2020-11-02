@@ -9,7 +9,7 @@ public class CSPBikeRiding extends CSP {
 	static Set<Object> varSandwich = new HashSet<Object>(Arrays.asList(new String[] {"bacon", "chicken", "cheese", "pepperoni", "tuna"}));
 	static Set<Object> varJuice = new HashSet<Object>(Arrays.asList(new String[] {"apple", "cranberry", "grapefruit", "orange", "pineapple"}));
 	static Set<Object> varAge = new HashSet<Object>(Arrays.asList(new String[] {"12 years", "13 years", "14 years", "15 years", "16 years"}));
-    	static Set<Object> varSport = new HashSet<Object>(Arrays.asList(new String[] {"baseball", "basketball", "hockey", "soccer", "swimming"}));
+    static Set<Object> varSport = new HashSet<Object>(Arrays.asList(new String[] {"baseball", "basketball", "hockey", "soccer", "swimming"}));
 	
 	public boolean isGood(Object X, Object Y, Object x, Object y) {
 		//System.out.println("X = " + X + ", Y = " + Y + ", x = " + x + ", y = " + y);             // for testing

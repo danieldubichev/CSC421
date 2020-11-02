@@ -58,9 +58,9 @@ public class GameNim extends Game{
                 case 1: //Human
 
                     //get human's move
-                    System.out.print("Enter a number between 1 and 3");
+                    System.out.print("Enter a number between 1 and 3: ");
                     int p = Integer.parseInt( in.readLine() );
-                    if(p > 3){
+                    if(p > 3 || p < 0){
                         System.out.println("Invalid Move");
                         continue;
                     }

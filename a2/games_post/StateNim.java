@@ -1,11 +1,4 @@
-/* StateNim keeps track of the current state of the game. It tracks an array
-of coins. 13 coins are represented by a 'O' and once a player makes his/her
-move it represents the removed coins with an 'X'.
 
-represents as state with 3 coins removed: X,X,X,O,O,O,O,O,O,O,O,O
-
-In addition the state stores a player value indicating whose turn it is
-*/
 
 public class StateNim extends State{
 
